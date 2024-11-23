@@ -5,15 +5,15 @@ import * as auth from "../utils/auth";
 
 import "../blocks/auth-form/auth-form.css";
 
-function Register({onRegister}) {
+function Register() {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
 
   function handleSubmit(e) {
     e.preventDefault();
-    dispatchEvent(new CustomEvent("signup", {
+    dispatchEvent(new CustomEvent("sign-up", {
       detail: {
-        promiseFunc: auth.register(email, password),
+        signUpRequest: auth.register(email, password),
       }
     }));
   }

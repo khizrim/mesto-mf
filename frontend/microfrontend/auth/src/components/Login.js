@@ -10,9 +10,10 @@ function Login({onLogin}) {
 
   React.useEffect(() => {
     const token = localStorage.getItem("jwt");
+
     if (token) {
       auth.checkToken(token).then((res) => {
-        dispatchEvent(new CustomEvent("jwt-check", {
+        dispatchEvent(new CustomEvent("auth-check", {
           detail: {
             email: res.data.email
           }
@@ -26,9 +27,9 @@ function Login({onLogin}) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    dispatchEvent(new CustomEvent("jwt-change", {
+    dispatchEvent(new CustomEvent("auth-update", {
       detail: {
-        promiseFunc: auth.login(email, password),
+        authRequest: auth.login(email, password),
         email: email
       }
     }));

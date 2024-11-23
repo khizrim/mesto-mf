@@ -64,8 +64,12 @@ module.exports = (_, argv) => ({
     new ModuleFederationPlugin({
       name: "card",
       filename: "remoteEntry.js",
-      remotes: {},
-      exposes: {},
+      remotes: {
+        shared: 'shared@http://localhost:8084/remoteEntry.js'
+      },
+      exposes: {
+        "./CardsControl": "./src/App.jsx",
+      },
       shared: {
         ...deps,
         react: {

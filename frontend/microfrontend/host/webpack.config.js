@@ -69,7 +69,10 @@ module.exports = (_, argv) => ({
       name: "host",
       filename: "remoteEntry.js",
       remotes: {
-        auth: "auth@http://localhost:8081/remoteEntry.js"
+        auth: "auth@http://localhost:8081/remoteEntry.js",
+        card: "card@http://localhost:8082/remoteEntry.js",
+        profile: "profile@http://localhost:8083/remoteEntry.js",
+        shared: 'shared@http://localhost:8084/remoteEntry.js'
       },
       exposes: {},
       shared: {

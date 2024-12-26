@@ -38,31 +38,29 @@ auth-form, card, header, footer и т. д.). Это ограничивает н�
 возможности через Webpack Module Federation, обеспечивая модульность и
 разделение проблем.
 
-```plantuml
-@startuml
+## Схема взаимодействия компонентов
 
-package "Host" {
-  [Header]<<shared component>>
-  [Footer]<<shared component>>
-}
+### Host
 
-package "Microfrontends" {
-  [Auth]
-  [Card]
-  [Profile]
-  [Shared]
-}
+- **Header** (общий компонент)
+- **Footer** (общий компонент)
 
-[Host] --> [Auth]
-[Host] --> [Card]
-[Host] --> [Profile]
+### Microfrontends
 
-[Auth] --> [Shared]
-[Card] --> [Shared]
-[Profile] --> [Shared]
+- **Auth**
+- **Card**
+- **Profile**
+- **Shared** (общий компонент)
 
-@enduml
-```
+### Связи:
+
+1. **Host** взаимодействует с:
+
+- **Auth**
+- **Card**
+- **Profile**
+
+2. **Auth**, **Card**, и **Profile** используют общий компонент **Shared**.
 
 **Host**
 
@@ -124,4 +122,4 @@ npm run start:all
 
 # Задание 2: Декомпозиция веб-приложения на Django на микросервисы
 
-
+Файл со схемой доступен [здесь](./swa-sprint-1.drawio)
